@@ -61,6 +61,7 @@ function _M:content(context)
 end
 
 function _M:access(context)
+  ngx.req.read_body()
    local data= ngx.req.get_body_data()
   ngx.log(ngx.ERR, "body data= ", data)
   local uri = ngx.var.uri
