@@ -59,7 +59,17 @@ function _M:content(context)
   ngx.log(ngx.ERR, "body data= ", data)
   
 end
-
+function _M:body_filter()
+  -- can read and change response body
+  -- https://github.com/openresty/lua-nginx-module/blob/master/README.markdown#body_filter_by_lua
+  ngx.log(ngx.ERR, "body filter has been started")
+  local resp_body = string.sub(ngx.arg[1], 1, 1000)
+        ngx.ctx.buffered = (ngx.ctx.buffered or "") .. resp_body
+        if ngx.arg[2] then
+          ngx.var.resp_body = ngx.ctx.buffered
+        end
+  ngx.log(ngx.ERR, "response body= ", resp_body)
+end
 function _M:access(context)
   ngx.req.read_body()
    local data= ngx.req.get_body_data()
