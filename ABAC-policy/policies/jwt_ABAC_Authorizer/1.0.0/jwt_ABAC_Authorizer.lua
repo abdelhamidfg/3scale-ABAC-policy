@@ -54,13 +54,15 @@ local function deny_request(error_msg)
   ngx.exit(ngx.status)
 end
 
-function _M:content()
+function _M:content(context)
   local data= ngx.req.get_body_data()
   ngx.log(ngx.ERR, "body data= ", data)
   
 end
 
 function _M:access(context)
+   local data= ngx.req.get_body_data()
+  ngx.log(ngx.ERR, "body data= ", data)
   local uri = ngx.var.uri
   local request_method =  ngx.req.get_method()
   local is_auth=check_authorization( self.author_rest_endpoint,context.jwt[self.JWT_claim_name],request_method,uri)
