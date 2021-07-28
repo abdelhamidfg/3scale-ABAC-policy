@@ -54,6 +54,11 @@ local function deny_request(error_msg)
   ngx.exit(ngx.status)
 end
 
+function _M:content()
+  local data= ngx.req.get_body_data()
+  ngx.log(ngx.ERR, "body data= ", data)
+  
+end
 
 function _M:access(context)
   local uri = ngx.var.uri
