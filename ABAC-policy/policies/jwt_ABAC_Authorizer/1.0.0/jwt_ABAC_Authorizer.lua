@@ -78,6 +78,7 @@ function _M:access(context)
   -- local data= ngx.req.get_body_data()
   local h= ngx.req.get_headers(0, true)
   ngx.log(ngx.ERR,"auth=", h["Authorization"])
+  ngx.log(ngx.ERR,"keycloack_uri=", context.jwt["iss"])
  
   for k,v in pairs(h) do
  ngx.log(ngx.ERR, "context.jwt= ", k,v)
