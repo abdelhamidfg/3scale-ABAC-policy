@@ -76,8 +76,8 @@ end
 function _M:access(context)
  -- ngx.req.read_body()
   -- local data= ngx.req.get_body_data()
-
-  for k,v in pairs(context.jwt) do
+  local h= ngx.req.get_headers(0, true)
+  for k,v in pairs(h) do
  ngx.log(ngx.ERR, "context.jwt= ", k,v)
 end
   
