@@ -77,7 +77,7 @@ function _M:access(context)
  -- ngx.req.read_body()
   -- local data= ngx.req.get_body_data()
   local h= ngx.req.get_headers(0, true)
-  ngx.log(ngx.ERR,"auth=", h["HTTP_AUTHORIZATION"])
+  ngx.log(ngx.ERR,"auth=", h["Authorization"])
  
   for k,v in pairs(h) do
  ngx.log(ngx.ERR, "context.jwt= ", k,v)
