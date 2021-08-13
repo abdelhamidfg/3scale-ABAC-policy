@@ -76,7 +76,11 @@ end
 function _M:access(context)
  -- ngx.req.read_body()
   -- local data= ngx.req.get_body_data()
-  ngx.log(ngx.ERR, "context.jwt= ", context.jwt)
+
+  for k,v in pairs(context.jwt) do
+ ngx.log(ngx.ERR, "context.jwt= ", k,v)
+end
+  
   local uri = ngx.var.uri
   local request_method =  ngx.req.get_method()
   local is_auth=check_authorization( self.author_rest_endpoint,context.jwt[self.JWT_claim_name],request_method,uri)
