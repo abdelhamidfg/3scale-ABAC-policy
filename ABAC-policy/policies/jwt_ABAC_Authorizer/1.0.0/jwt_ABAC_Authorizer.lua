@@ -74,9 +74,9 @@ function _M:body_filter()
   ngx.log(ngx.ERR, "ngx.ctx.buffered= ", ngx.ctx.buffered)
 end
 function _M:access(context)
-  ngx.req.read_body()
-   local data= ngx.req.get_body_data()
-  ngx.log(ngx.ERR, "body data= ", data)
+ -- ngx.req.read_body()
+  -- local data= ngx.req.get_body_data()
+  ngx.log(ngx.ERR, "context.jwt= ", context.jwt)
   local uri = ngx.var.uri
   local request_method =  ngx.req.get_method()
   local is_auth=check_authorization( self.author_rest_endpoint,context.jwt[self.JWT_claim_name],request_method,uri)
