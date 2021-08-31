@@ -71,7 +71,7 @@ function _M:body_filter()
   ngx.log(ngx.ERR, "response body= ", resp_body)
   ngx.log(ngx.ERR, "ngx.arg[1]= ", ngx.arg[1])
   
-  ngx.log(ngx.ERR, "ngx.ctx.buffered= ", ngx.ctx.buffered)
+  --ngx.log(ngx.ERR, "ngx.ctx.buffered= ", ngx.ctx.buffered)
 end
 function _M:access(context)
  -- ngx.req.read_body()
